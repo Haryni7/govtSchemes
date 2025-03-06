@@ -4,6 +4,7 @@ import Scheme from "../models/Scheme.js";
 export const getSchemes = async (req, res) => {
   try {
     const schemes = await Scheme.find();
+    // console.log(schemes);
     res.status(200).json(schemes);
   } catch (error) {
     res.status(500).json({ message: "Error fetching schemes", error });

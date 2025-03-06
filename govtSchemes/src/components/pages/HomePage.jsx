@@ -28,8 +28,8 @@ const HomePage = () => {
       try {
         const response = await axios.get("http://localhost:5000/api/schemes/");
         // Assuming the response data is an array of scheme objects with a 'scheme' field
-        const schemeNames = response.data.map((item) => item.scheme);
-        setSchemes(schemeNames);
+        // const schemeNames = response.data;
+        setSchemes(response.data);
         setLoading(false);
       } catch (err) {
         setError("Failed to fetch schemes. Please try again later.");
@@ -39,6 +39,7 @@ const HomePage = () => {
 
     fetchSchemes();
   }, []); // Empty dependency array means it runs once on mount
+  console.log(schemes);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -50,8 +51,10 @@ const HomePage = () => {
 
   // Filter schemes based on search query
   const filteredSchemes = schemes.filter((scheme) =>
-    scheme.toLowerCase().includes(searchQuery.toLowerCase())
+    scheme.scheme.toLowerCase().includes(searchQuery.toLowerCase())
   );
+
+  console.log(schemes);
 
   return (
     <div className="flex flex-col items-center min-h-screen p-6 bg-gray-100">
@@ -65,7 +68,7 @@ const HomePage = () => {
       </motion.h1>
 
       {/* Form Section */}
-      <div className="w-full max-w-lg bg-white p-6 rounded-lg shadow-md mb-8">
+      <div className="w-full max-w-xl bg-white p-6 rounded-lg shadow-md mb-8">
         <div className="mb-4">
           <input
             type="text"
@@ -305,16 +308,16 @@ const HomePage = () => {
                 filteredSchemes.map((scheme, index) => (
                   <motion.li
                     key={index}
-                    className=" text-gray-700 hover:text-orange-800 transition-all duration-300  rounded-lg shadow-sm"
+                    className=" text-gray-700 hover:text-orange-800 transition-all duration-300  rounded-lg shadow-sm "
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.3, delay: index * 0.05 }}
                   >
                     <Link
-                      to={`/schemes/${schemes._id}`}
-                      className="block w-full h-full"
+                      to={`/schemes/${scheme._id}`}
+                      className="block w-full h-full no-underline"
                     >
-                      {scheme}
+                      {scheme.scheme}
                     </Link>
                   </motion.li>
                 ))
