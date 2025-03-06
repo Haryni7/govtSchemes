@@ -7,6 +7,6 @@ const router = express.Router();
 router.get("/", getSchemes);
 
 // Route to get a specific scheme by ID
-router.get("/:id", getSchemeById);
+router.get("/schemes/:id", getSchemeById);
 
 export default router;
