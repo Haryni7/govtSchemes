@@ -10,11 +10,11 @@ const GrievanceSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    issue: {
+    schemeName: {
       type: String,
       required: true,
     },
-    details: {
+    complaint: {
       type: String,
       required: true,
     },
