@@ -10,18 +10,9 @@ const GrievanceSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    schemeName: {
-      type: String,
-      required: true,
-    },
     complaint: {
       type: String,
       required: true,
-    },
-    status: {
-      type: String,
-      enum: ["Pending", "In Progress", "Resolved"],
-      default: "Pending",
     },
   },
   { timestamps: true }

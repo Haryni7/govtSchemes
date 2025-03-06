@@ -69,7 +69,7 @@ const SchemeList = () => {
                 filteredSchemes.map((scheme, index) => (
                   <motion.li
                     key={index}
-                    className=" text-gray-700 hover:text-orange-800 transition-all duration-300  rounded-lg shadow-sm "
+                    className=" text-gray-700 hover:text-orange-800 transition-all duration-300"
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.3, delay: index * 0.05 }}

@@ -3,8 +3,9 @@ import Grievance from "../models/Grievance.js";
 // Submit a new grievance
 export const submitGrievance = async (req, res) => {
   try {
-    const { name, email, issue, details } = req.body;
-    const newGrievance = new Grievance({ name, email, issue, details });
+    const { name, email, complaint } = req.body;
+    console.log(req.body);
+    const newGrievance = new Grievance({ name, email, complaint });
     await newGrievance.save();
     res.status(201).json({ message: "Grievance submitted successfully" });
   } catch (error) {

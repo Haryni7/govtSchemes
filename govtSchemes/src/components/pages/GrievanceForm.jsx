@@ -1,21 +1,35 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import axios from "axios";
 
 const GrievanceForm = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    scheme: "",
-    message: "",
+    complaint: "",
   });
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Grievance submitted:", formData);
+    try {
+      const res = await axios.post(
+        "http://localhost:5000/api/grievances/submit",
+        formData
+      );
+      console.log("Grievance submitted:", res.data);
+      alert("Grievance submitted successfully");
+      setFormData({
+        name: "",
+        email: "",
+        complaint: "",
+      });
+    } catch (error) {
+      console.error("Error submitting grievance:", error);
+    }
   };
 
   return (
@@ -64,26 +78,11 @@ const GrievanceForm = () => {
 
         <div className="mb-4">
           <label className="block mb-2 text-green-800 font-semibold">
-            Scheme / திட்டம்
-          </label>
-          <input
-            type="text"
-            name="scheme"
-            value={formData.scheme}
-            onChange={handleChange}
-            className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
-            placeholder="Enter scheme name / திட்டத்தின் பெயரை உள்ளிடவும்"
-            required
-          />
-        </div>
-
-        <div className="mb-4">
-          <label className="block mb-2 text-green-800 font-semibold">
-            Message / செய்தி
+            Complaint / புகார்
           </label>
           <textarea
-            name="message"
-            value={formData.message}
+            name="complaint"
+            value={formData.complaint}
             onChange={handleChange}
             className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 h-24"
             placeholder="Enter your grievance / உங்கள் புகாரை உள்ளிடவும்"
