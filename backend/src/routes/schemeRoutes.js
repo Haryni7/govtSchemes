@@ -3,7 +3,7 @@ import {
   getSchemes,
   getSchemeById,
   getUserSchemes,
-} from "../controllers/schemeController.js";
+} from "../controllers/SchemeController.js";
 
 const router = express.Router();
 

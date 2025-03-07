@@ -1,5 +1,5 @@
 import express from "express";
-import { submitGrievance, getGrievances } from "../controllers/grievanceController.js";
+import { submitGrievance, getGrievances } from "../controllers/GrievanceController.js";
 
 const router = express.Router();
 
