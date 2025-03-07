@@ -23,15 +23,15 @@ const FormSection = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.get(
-        "http://localhost:5000/api/schemes/user",
-        {
-          params: formData, // Send formData as query parameters
-        }
-      );
-      console.log("Form submitted successfully:", formData);
+      const response = await axios.get("http://localhost:5000/api/schemes/user", {
+        params: formData, // Send formData as query parameters
+      });
+  
+      console.log(response.data); // Check response structure
+  
+      // Navigate with the correct state
       navigate("/UserSchemeDetails", {
-        state: { schemes: response.data.schemes },
+        state: { schemes: response.data }, // Send response directly
       });
     } catch (error) {
       console.error("Error submitting form:", error);
