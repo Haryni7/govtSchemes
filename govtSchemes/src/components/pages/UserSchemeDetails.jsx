@@ -1,4 +1,4 @@
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, Link } from "react-router-dom";
 import { useEffect } from "react";
 
 const UserSchemeDetails = () => {
@@ -15,33 +15,39 @@ const UserSchemeDetails = () => {
     }
   }, [location, navigate]);
 
-  console.log("Schemes:", schemes);
+  // console.log("Schemes:", schemes);
 
   return (
-    <div className="min-h-screen p-6 bg-gray-100">
+    <div className="min-h-screen p-6 bg-gray-100 mt-36">
       <h1 className="text-3xl font-bold text-center text-orange-600 mb-6">
         Available Schemes / கிடைக்கும் திட்டங்கள்
       </h1>
 
+      <p className="text-center text-gray-700 font-medium">
+        Total Schemes Found: {schemes.length}
+      </p>
+
       {schemes.length === 0 ? (
-        <p className="text-center text-gray-600">
-          No schemes found based on your criteria. / 
-          உங்கள் அளவுகோல்களின் அடிப்படையில் எந்த திட்டங்களும் கிடைக்கவில்லை.
+        <p className="text-center text-gray-500 italic">
+          No schemes found based on your criteria. / உங்கள் அளவுகோல்களின்
+          அடிப்படையில் எந்த திட்டங்களும் கிடைக்கவில்லை.
         </p>
       ) : (
-        <div className="grid gap-4 max-w-4xl mx-auto">
+        <ul className="space-y-4">
           {schemes.map((scheme) => (
-            <div
-              key={scheme._id} // Assuming each scheme has a unique _id from MongoDB
-              className="bg-white p-4 rounded-lg shadow-md border border-gray-200 hover:shadow-lg transition"
+            <Link
+              key={scheme._id}
+              to={`/schemes/${scheme._id}`}
+              className="block"
             >
-              <h2 className="text-xl font-semibold text-green-800">
-                {scheme.name}
-              </h2>
-              <p className="text-gray-600">{scheme.scheme || "No description available."}</p>
-            </div>
+              <li className="p-2 bg-white rounded-xl border border-gray-200 hover:shadow-lg hover:bg-orange-50 transition-all duration-300">
+                <h2 className="text-lg font-semibold text-gray-800">
+                  {scheme.scheme}
+                </h2>
+              </li>
+            </Link>
           ))}
-        </div>
+        </ul>
       )}
     </div>
   );

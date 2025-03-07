@@ -14,13 +14,17 @@ export const getSchemes = async (req, res) => {
 // Get a scheme by ID
 export const getSchemeById = async (req, res) => {
   try {
-    const scheme = await Scheme.findById(req.params.id);
+    const scheme = await Scheme.findById(req.params.id).lean();
     if (!scheme) {
       return res.status(404).json({ message: "Scheme not found" });
     }
+    console.log("Full scheme data:", scheme); // Debug log
     res.status(200).json(scheme);
   } catch (error) {
-    res.status(500).json({ message: "Error fetching scheme", error });
+    console.error("Error details:", error); // Debug log
+    res
+      .status(500)
+      .json({ message: "Error fetching scheme", error: error.message });
   }
 };
 
@@ -35,7 +39,7 @@ export const getUserSchemes = async (req, res) => {
       maritalStatus,
       religion,
       occupation,
-      location,
+      // location,
     } = req.query;
 
     // Dynamically build query object
@@ -49,7 +53,7 @@ export const getUserSchemes = async (req, res) => {
     if (maritalStatus) query["eligibility.maritalStatus"] = maritalStatus;
     if (religion) query["eligibility.religion"] = religion;
     if (occupation) query["eligibility.occupation"] = occupation;
-    if (location) query["eligibility.location"] = { $in: [location] };
+    // if (location) query["eligibility.location"] = { $in: [location] };
 
     const schemes = await Scheme.find(query);
 
@@ -60,4 +64,3 @@ export const getUserSchemes = async (req, res) => {
     res.status(500).json({ message: "Internal server error" });
   }
 };
-

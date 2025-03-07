@@ -249,7 +249,7 @@
     Eligibility: {
       age: { min: "18-35", max: "Above 60" },
       income: { min: "Below 1.5 Lakh", max: "6-12 Lakhs" },
-      caste: ["SC", "ST", "OBC", "General", null],
+      caste: ["SC"],
       gender: ["Male", "Female", null],
       education: ["Below 8th", "8th Pass", null],
       maritalStatus: ["Single", "Married", null],

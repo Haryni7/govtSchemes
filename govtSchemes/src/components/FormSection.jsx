@@ -13,7 +13,7 @@ const FormSection = () => {
     maritalStatus: "",
     religion: "",
     occupation: "",
-    location: "",
+    // location: "",
   });
 
   const handleChange = (e) => {
@@ -23,12 +23,15 @@ const FormSection = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.get("http://localhost:5000/api/schemes/user", {
-        params: formData, // Send formData as query parameters
-      });
-  
-      console.log(response.data); // Check response structure
-  
+      const response = await axios.get(
+        "http://localhost:5000/api/schemes/user",
+        {
+          params: formData, // Send formData as query parameters
+        }
+      );
+
+      // console.log(response.data); // Check response structure
+
       // Navigate with the correct state
       navigate("/UserSchemeDetails", {
         state: { schemes: response.data }, // Send response directly
@@ -194,7 +197,7 @@ const FormSection = () => {
             </select>
           </div>
 
-          <div className="mb-4">
+          {/* <div className="mb-4">
             <select
               name="location"
               value={formData.location}
@@ -251,7 +254,7 @@ const FormSection = () => {
               <option value="Virudhunagar">Virudhunagar / விருதுநகர்</option>
               <option value="Other">Other / மற்றவை</option>
             </select>
-          </div>
+          </div> */}
 
           <button className="w-full px-6 py-3 bg-orange-600 text-white rounded-lg hover:bg-orange-700 transition-colors duration-200">
             Search / தேடு

@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 const Header = () => {
   return (
-    <header className="bg-white text-black p-4 shadow-md border-b-4 border-orange-600">
+    <header className="bg-white text-black p-4 shadow-md border-b-4 border-orange-600 top-0 fixed w-full">
       <div className="container mx-auto flex justify-between items-center">
         {/* Left Section: Logo and Title */}
         <div className="flex items-center space-x-4">

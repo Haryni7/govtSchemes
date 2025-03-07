@@ -14,12 +14,10 @@ const SchemeSchema = new mongoose.Schema(
         min: {
           type: String,
           enum: ["Below 18", "18-35", "35-60", "Above 60"],
-          default: null,
         },
         max: {
           type: String,
           enum: ["Below 18", "18-35", "35-60", "Above 60"],
-          default: null,
         },
       },
       income: {
@@ -32,7 +30,6 @@ const SchemeSchema = new mongoose.Schema(
             "6-12 Lakhs",
             "Above 12 Lakhs",
           ],
-          default: null,
         },
         max: {
           type: String,
@@ -43,18 +40,15 @@ const SchemeSchema = new mongoose.Schema(
             "6-12 Lakhs",
             "Above 12 Lakhs",
           ],
-          default: null,
         },
       },
       caste: {
         type: String,
         enum: ["SC", "ST", "OBC", "MBC", "FC", "General", "Others"],
-        default: null,
       },
       gender: {
         type: String,
         enum: ["Male", "Female", "Other"],
-        default: null,
       },
       education: {
         type: String,
@@ -66,17 +60,14 @@ const SchemeSchema = new mongoose.Schema(
           "Graduate",
           "Postgraduate",
         ],
-        default: null,
       },
       maritalStatus: {
         type: String,
         enum: ["Single", "Married", "Divorced", "Widowed"],
-        default: null,
       },
       religion: {
         type: String,
         enum: ["Hindu", "Muslim", "Christian", "Sikh", "Other"],
-        default: null,
       },
       occupation: {
         type: String,
@@ -88,22 +79,11 @@ const SchemeSchema = new mongoose.Schema(
           "Unemployed",
           "Student",
         ],
-        default: null,
       },
       location: {
-        type: String, // Fixed: Proper array type
+        type: String,
         trim: true,
-        
       },
-    },
-    description: {
-      type: String,
-      trim: true,
-      default: "",
-    },
-    active: {
-      type: Boolean,
-      default: true,
     },
   },
   {
@@ -112,24 +92,6 @@ const SchemeSchema = new mongoose.Schema(
     toObject: { virtuals: true },
   }
 );
-
-// ✅ Fixed eligibilitySummary Virtual
-SchemeSchema.virtual("eligibilitySummary").get(function () {
-  return `Age: ${this.eligibility.age.min || "N/A"} - ${
-    this.eligibility.age.max || "N/A"
-  }, Income: ${this.eligibility.income.min || "N/A"} - ${
-    this.eligibility.income.max || "N/A"
-  }, Caste: ${this.eligibility.caste || "N/A"}, Gender: ${
-    this.eligibility.gender || "N/A"
-  }`;
-});
-
-// ✅ Fixed Indexing (Avoid redundant indexes)
-SchemeSchema.index({
-  "eligibility.age.min": 1,
-  "eligibility.age.max": 1,
-  "eligibility.income.min": 1,
-});
 
 const Scheme = mongoose.model("Scheme", SchemeSchema);
 export default Scheme;
