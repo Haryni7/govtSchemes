@@ -44,11 +44,7 @@ const SchemeDetails = () => {
           <strong className="text-blue-600">Income:</strong>{" "}
           {eligibility.income?.min !== null
             ? eligibility.income.min
-            : "No Minimum"}{" "}
-          {/* -{" "}
-          {eligibility.income?.max !== null
-            ? eligibility.income.max
-            : "No Maximum"} */}
+            : "No Minimum"}
         </p>
 
         <p className="text-gray-700">
@@ -83,11 +79,16 @@ const SchemeDetails = () => {
           {eligibility.occupation?.filter(Boolean).join(", ") ||
             "All Occupations"}
         </p>
-        {/* 
-        <p className="text-gray-700">
-          <strong className="text-blue-600">Location:</strong>{" "}
-          {eligibility.location?.filter(Boolean).join(", ") || "All Locations"}
-        </p> */}
+      </div>
+
+      <div className="flex justify-center mt-6">
+        <a
+          href="https://www.tn.gov.in/scheme_search.php"
+          className="max-w-fit bg-blue-600 text-white px-4 py-2 rounded-lg shadow hover:bg-blue-700 transition"
+          target="_blank"
+        >
+          Apply on Site
+        </a>
       </div>
     </div>
   );
