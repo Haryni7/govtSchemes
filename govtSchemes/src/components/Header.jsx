@@ -8,15 +8,15 @@ const Header = () => {
         {/* Left Section: Logo and Title */}
         <div className="flex items-center space-x-4">
           {/* Tamil Nadu Emblem Placeholder */}
-          <img
+          {/* <img
             src="https://www.tn.gov.in/sites/default/Tamil_Nadu_emb.png"
             alt="Tamil Nadu Emblem"
             className="size-18"
-          />
+          /> */}
           <Link to="/" className="text-xl font-bold flex flex-col">
-            <span className="text-orange-600">தமிழ்நாடு அரசு</span>{" "}
+            {/* <span className="text-orange-600">தமிழ்நாடு அரசு</span>{" "} */}
             {/* Tamil: Tamil Nadu Government */}
-            <span className="text-green-800">Government of Tamil Nadu</span>
+            <span className="text-green-800">Govt of TN</span>
           </Link>
         </div>
         <motion.h1

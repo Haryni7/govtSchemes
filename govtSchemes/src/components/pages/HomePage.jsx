@@ -11,7 +11,7 @@ const HomePage = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        Schemes Finder - தமிழ்நாடு அரசு திட்டங்கள்
+        Schemes Finder
       </motion.h1>
       <motion.div
         className="text-md  text-center"

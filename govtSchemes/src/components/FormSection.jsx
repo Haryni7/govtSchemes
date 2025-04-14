@@ -30,8 +30,6 @@ const FormSection = () => {
         }
       );
 
-      // console.log(response.data); // Check response structure
-
       // Navigate with the correct state
       navigate("/UserSchemeDetails", {
         state: { schemes: response.data }, // Send response directly
@@ -48,20 +46,27 @@ const FormSection = () => {
       <form onSubmit={handleSubmit}>
         <div className="w-full max-w-xl bg-white p-6 rounded-lg shadow-md mb-8">
           <div className="mb-4">
+            <label className="block text-gray-700 mb-2">
+              Full Name / முழு பெயர்
+            </label>
             <input
               type="text"
               name="name"
-              placeholder="Full Name / முழு பெயர்"
+              placeholder="Enter your full name"
               onChange={handleChange}
               className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
             />
           </div>
 
           <div className="mb-4">
+            <label className="block text-gray-700 mb-2">
+              Age / வயது <span className="text-red-500">*</span>
+            </label>
             <select
               name="age"
               value={formData.age}
               onChange={handleChange}
+              required
               className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
             >
               <option value="">Select Age / வயதை தேர்ந்தெடு</option>
@@ -73,10 +78,14 @@ const FormSection = () => {
           </div>
 
           <div className="mb-4">
+            <label className="block text-gray-700 mb-2">
+              Income / வருமானம் <span className="text-red-500">*</span>
+            </label>
             <select
               name="income"
               value={formData.income}
               onChange={handleChange}
+              required
               className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
             >
               <option value="">Select Income / வருமானத்தை தேர்ந்தெடு</option>
@@ -93,10 +102,14 @@ const FormSection = () => {
           </div>
 
           <div className="mb-4">
+            <label className="block text-gray-700 mb-2">
+              Caste / சாதி <span className="text-red-500">*</span>
+            </label>
             <select
               name="caste"
               value={formData.caste}
               onChange={handleChange}
+              required
               className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
             >
               <option value="">Select Caste / சாதியை தேர்ந்தெடு</option>
@@ -111,10 +124,14 @@ const FormSection = () => {
           </div>
 
           <div className="mb-4">
+            <label className="block text-gray-700 mb-2">
+              Gender / பாலினம் <span className="text-red-500">*</span>
+            </label>
             <select
               name="gender"
               value={formData.gender}
               onChange={handleChange}
+              required
               className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
             >
               <option value="">Select Gender / பாலினத்தை தேர்ந்தெடு</option>
@@ -125,6 +142,9 @@ const FormSection = () => {
           </div>
 
           <div className="mb-4">
+            <label className="block text-gray-700 mb-2">
+              Education / கல்வி
+            </label>
             <select
               name="education"
               value={formData.education}
@@ -144,6 +164,9 @@ const FormSection = () => {
           </div>
 
           <div className="mb-4">
+            <label className="block text-gray-700 mb-2">
+              Marital Status / திருமண நிலை
+            </label>
             <select
               name="maritalStatus"
               value={formData.maritalStatus}
@@ -161,6 +184,7 @@ const FormSection = () => {
           </div>
 
           <div className="mb-4">
+            <label className="block text-gray-700 mb-2">Religion / மதம்</label>
             <select
               name="religion"
               value={formData.religion}
@@ -177,6 +201,9 @@ const FormSection = () => {
           </div>
 
           <div className="mb-4">
+            <label className="block text-gray-700 mb-2">
+              Occupation / தொழில்
+            </label>
             <select
               name="occupation"
               value={formData.occupation}
@@ -196,65 +223,6 @@ const FormSection = () => {
               <option value="Student">Student</option>
             </select>
           </div>
-
-          {/* <div className="mb-4">
-            <select
-              name="location"
-              value={formData.location}
-              onChange={handleChange}
-              className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
-            >
-              <option value="">Select Location / இடத்தை தேர்ந்தெடு</option>
-              <option value="Ariyalur">Ariyalur / அரியலூர்</option>
-              <option value="Chengalpattu">Chengalpattu / செங்கல்பட்டு</option>
-              <option value="Chennai">Chennai / சென்னை</option>
-              <option value="Coimbatore">Coimbatore / கோயம்புத்தூர்</option>
-              <option value="Cuddalore">Cuddalore / கடலூர்</option>
-              <option value="Dharmapuri">Dharmapuri / தர்மபுரி</option>
-              <option value="Dindigul">Dindigul / திண்டுக்கல்</option>
-              <option value="Erode">Erode / ஈரோடு</option>
-              <option value="Kallakurichi">
-                Kallakurichi / கல்லக்குறிச்சி
-              </option>
-              <option value="Kanchipuram">Kanchipuram / காஞ்சிபுரம்</option>
-              <option value="Kanyakumari">Kanyakumari / கன்னியாகுமரி</option>
-              <option value="Karur">Karur / கரூர்</option>
-              <option value="Krishnagiri">Krishnagiri / கிருஷ்ணகிரி</option>
-              <option value="Madurai">Madurai / மதுரை</option>
-              <option value="Mayiladuthurai">
-                Mayiladuthurai / மயிலாடுதுறை
-              </option>
-              <option value="Nagapattinam">Nagapattinam / நாகப்பட்டினம்</option>
-              <option value="Namakkal">Namakkal / நாமக்கல்</option>
-              <option value="Perambalur">Perambalur / பெரம்பலூர்</option>
-              <option value="Pudukkottai">Pudukkottai / புதுக்கோட்டை</option>
-              <option value="Ramanathapuram">
-                Ramanathapuram / ராமநாதபுரம்
-              </option>
-              <option value="Ranipet">Ranipet / ராணிப்பேட்டை</option>
-              <option value="Salem">Salem / சேலம்</option>
-              <option value="Sivaganga">Sivaganga / சிவகங்கை</option>
-              <option value="Tenkasi">Tenkasi / தென்காசி</option>
-              <option value="Thanjavur">Thanjavur / தஞ்சாவூர்</option>
-              <option value="Theni">Theni / தேனி</option>
-              <option value="Thoothukudi">Thoothukudi / தூத்துக்குடி</option>
-              <option value="Tiruchirappalli">
-                Tiruchirappalli / திருச்சிராப்பள்ளி
-              </option>
-              <option value="Tirunelveli">Tirunelveli / திருநெல்வேலி</option>
-              <option value="Tirupathur">Tirupathur / திருப்பத்தூர்</option>
-              <option value="Tiruppur">Tiruppur / திருப்பூர்</option>
-              <option value="Tiruvallur">Tiruvallur / திருவள்ளூர்</option>
-              <option value="Tiruvannamalai">
-                Tiruvannamalai / திருவண்ணாமலை
-              </option>
-              <option value="Tiruvarur">Tiruvarur / திருவாரூர்</option>
-              <option value="Vellore">Vellore / வேலூர்</option>
-              <option value="Viluppuram">Viluppuram / விழுப்புரம்</option>
-              <option value="Virudhunagar">Virudhunagar / விருதுநகர்</option>
-              <option value="Other">Other / மற்றவை</option>
-            </select>
-          </div> */}
 
           <button className="w-full px-6 py-3 bg-orange-600 text-white rounded-lg hover:bg-orange-700 transition-colors duration-200">
             Search / தேடு
