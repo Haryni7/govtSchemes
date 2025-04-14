@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "npm install --prefix backend && npm install --prefix govtSchemes && npm run build --prefix govtSchemes",
+    "build": "npm install --prefix backend && npm install --prefix govtSchemes && npm run build --prefix govtSchemes --output dist",
     "start": "pnpm start --prefix backend"
   },
   "keywords": [],
