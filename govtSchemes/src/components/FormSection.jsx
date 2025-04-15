@@ -60,13 +60,12 @@ const FormSection = () => {
 
           <div className="mb-4">
             <label className="block text-gray-700 mb-2">
-              Age / வயது <span className="text-red-500">*</span>
+              Age / வயது
             </label>
             <select
               name="age"
               value={formData.age}
               onChange={handleChange}
-              required
               className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
             >
               <option value="">Select Age / வயதை தேர்ந்தெடு</option>
