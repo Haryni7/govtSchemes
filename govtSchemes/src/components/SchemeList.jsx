@@ -12,7 +12,7 @@ const SchemeList = () => {
   useEffect(() => {
     const fetchSchemes = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/schemes/");
+        const response = await axios.get("https://backend-a9uh.onrender.com/api/schemes/");
         // Assuming the response data is an array of scheme objects with a 'scheme' field
         // const schemeNames = response.data;
         setSchemes(response.data);

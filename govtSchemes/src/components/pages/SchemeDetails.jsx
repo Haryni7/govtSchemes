@@ -10,7 +10,7 @@ const SchemeDetails = () => {
     const fetchScheme = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:5000/api/schemes/schemes/${id}`
+          `https://backend-a9uh.onrender.com/api/schemes/schemes/${id}`
         );
         setScheme(response.data);
       } catch (error) {

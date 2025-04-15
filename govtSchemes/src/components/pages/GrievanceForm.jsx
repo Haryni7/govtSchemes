@@ -17,7 +17,7 @@ const GrievanceForm = () => {
     e.preventDefault();
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/grievances/submit",
+        "https://backend-a9uh.onrender.com/api/grievances/submit",
         formData
       );
       console.log("Grievance submitted:", res.data);

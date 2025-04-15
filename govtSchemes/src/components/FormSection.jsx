@@ -24,7 +24,7 @@ const FormSection = () => {
     e.preventDefault();
     try {
       const response = await axios.get(
-        "http://localhost:5000/api/schemes/user",
+        "https://backend-a9uh.onrender.com/api/schemes/user",
         {
           params: formData, // Send formData as query parameters
         }
